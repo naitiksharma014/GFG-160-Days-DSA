@@ -1,0 +1,69 @@
+//Given two strings, one is a text string txt and the other is a pattern string pat. The task is to print the indexes of all the occurrences of the pattern string in the text string. Use 0-based indexing while returning the indices. 
+//Note: Return an empty list in case of no occurrences of pattern.
+
+
+
+
+
+
+// User function Template for Java
+
+class Solution {
+
+    ArrayList<Integer> search(String pat, String txt) {
+        // your code here
+      ArrayList<Integer> result=new ArrayList<>();
+      int tn=txt.length();
+      int pn=pat.length();
+      
+      int[] lps=new int[pn];
+      compute(pat,lps,pn);
+      
+      int i=0,j=0;
+      
+      while(j<tn){
+          if(pat.charAt(i)==txt.charAt(j)){
+              i++;
+              j++;
+            }
+            
+            else{
+                if(i==0) j++;
+                else  i=lps[i-1];
+                
+            }
+            if(i==pn){
+                result.add(j-pn);
+                i=lps[i-1];
+            }
+            
+            
+        }
+        return result; 
+        
+        
+    }
+    
+    public void compute(String s, int a[], int n){
+        int i=0,j=1;
+        while(j<n){
+            if(s.charAt(i)==s.charAt(j)){
+                i++;
+                a[j]=i;
+                j++;
+                
+            }
+            else {
+                if(i==0){
+                   j++;
+                    
+                }
+                else{
+                    i=a[i-1];
+                }
+            }
+        }
+        
+    }
+    
+}
