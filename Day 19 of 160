@@ -1,0 +1,42 @@
+//Min Chars to Add for Palindrome
+
+
+//Given a string s, the task is to find the minimum characters to be added at the front to make the string palindrome.
+//Note: A palindrome string is a sequence of characters that reads the same forward and backward.
+
+
+
+//{ Driver Code Starts
+// Initial Template for Java
+
+import java.io.*;
+import java.lang.*;
+import java.util.*;
+
+
+// } Driver Code Ends
+
+// User function Template for Java
+
+
+class Solution {
+    public static int minChar(String s) {
+        
+        StringBuilder rev=new StringBuilder();
+        rev.append(s);
+        rev.reverse();
+        StringBuilder com=new StringBuilder();
+        com.append(s).append('$').append(rev.toString());
+        String complete=com.toString();
+        int n=complete.length();
+        int lps[]=new int[n];
+        Arrays.fill(lps,0);
+        int i=0,j=1;
+        while(j<n){
+            if(complete.charAt(j)==complete.charAt(i))lps[j++]=++i;
+            else if(i!=0)i=lps[i-1];
+            else j++;
+        }
+        return s.length()-i;
+    }
+}
