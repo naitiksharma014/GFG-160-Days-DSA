@@ -1,0 +1,21 @@
+//28.Merge Without Extra Space
+
+
+//Given a sorted array, arr[] and a number target, you need to find the number of occurrences of target in arr[]. 
+
+//Method 1:
+
+class Solution {
+    int countFreq(int[] arr, int target) {
+        // code here
+        int n=arr.length;
+        int count=0;
+        for(int i=0;i<n;i++){
+            if(arr[i]==target)count++;
+        }
+        return count;
+    }
+}
+
+
+//Method 2:
