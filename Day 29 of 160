@@ -1,0 +1,27 @@
+//29. Sorted and Rotated Minimum
+
+
+//A sorted array of distinct elements arr[] is rotated at some unknown point, the task is to find the minimum element in it. 
+
+
+
+
+// User function Template for Java
+
+class Solution {
+    public int findMin(int[] arr) {
+        // complete the function here
+       int n=arr.length;
+       int s=0;
+       int l=n-1;
+       int mid=0;
+       
+       while(s<l){
+           mid=(s+l)/2;
+           if(arr[mid]<arr[l])l=mid;
+           else s=mid+1;
+       }
+       return arr[s];
+       
+    }
+}    
