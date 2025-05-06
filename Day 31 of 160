@@ -1,0 +1,41 @@
+// Day 31: Peak element
+
+//Given an array arr[] where no two adjacent elements are same, find the index of a peak element.
+//An element is considered to be a peak if it is greater than its adjacent elements (if they exist).
+//If there are multiple peak elements, return index of any one of them.The output will be "true" if the index returned by your function is correct; otherwise, it will be "false".
+
+
+
+////{ Driver Code Starts
+// Initial Template for Java
+
+
+
+class Solution {
+
+    public int peakElement(int[] arr) {
+        // code here
+        int n=arr.length;
+        int i=0;
+        int j=n-1;
+        int mid;
+        
+        while(i<=j){
+            mid=i+(j-i)/2;
+            if( (mid==0 || arr[mid]>arr[mid-1]) && (mid==arr.length-1 || arr[mid]>arr[mid+1])){
+                return mid;
+            }
+            
+            if(mid>0 && arr[mid-1]>arr[mid]){
+                j=mid-1;
+            }
+            else{
+                i=mid+1;
+            }
+        }
+        
+        return -1;
+        
+        
+    }
+}
